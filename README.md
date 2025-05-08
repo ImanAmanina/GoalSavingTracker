@@ -1,2 +1,120 @@
-# GoalSavingTracker
-IWP AS02 - Goal Saving Tracker (GROUP 7)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goal Saving Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <style>/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #e0f7ff, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Container Styling */
+.container {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.15);
+    width: 90%;
+    max-width: 350px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Title */
+h1 {
+    font-weight: 700;
+    font-size: 26px;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+/* Form Styling */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    background: #f0f9ff;
+    border: 1px solid #d0e7ff;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #007bff;
+    background: #ffffff;
+}
+
+/* Button */
+.button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Message */
+#message {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ff4d4d;
+}</style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Goal Saving Tracker</h1>
+
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+             <a type="button" href="dashboard.html" class="button">Login</a>
+        </form>
+
+        <p id="message"></p>
+    </div>
+
+    <script src="app.js">
+    </script>
+</body>
+</html>
