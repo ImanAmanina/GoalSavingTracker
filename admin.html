@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Admin Dashboard</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #e0f7ff, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+/* Title */
+h1 {
+    font-weight: 700;
+    font-size: 26px;
+    color: #007bff;
+    margin-bottom: 30px;
+}
+
+/* Form Styling */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Button */
+.button {
+    width: 50%;
+    padding: 12px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Message */
+#message {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ff4d4d;
+}
+
+    .admin-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+	input, button {
+    margin: 5px;
+    padding: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <h2>Admin Dashboard - Goal Saving Tracker</h2>
+
+        <!-- View Pending User List -->
+        <h3>Pending User Registrations</h3>
+        <ul id="pendingUsers">
+            <!-- Users will be dynamically added here -->
+        </ul>
+
+        <!-- Approve or Reject User Registrations -->
+        <button onclick="approveUser()" class="button">Approve</button>
+        <button onclick="rejectUser()" class="button">Reject</button>
+
+        <!-- Delete User Accounts -->
+        <h3>Delete User Accounts</h3>
+        <input type="text" id="deleteUsername" placeholder="Enter username to delete">
+        <button onclick="deleteUser()" class="button">Delete User</button>
+
+        <!-- Search Users -->
+        <h3>Search for Users</h3>
+        <input type="text" id="searchInput" placeholder="Enter username or email">
+        <button onclick="searchUser()" class="button">Search</button>
+        <p id="searchResult"></p>
+    </div>
+
+    <script src="script.js">
+    	// Sample pending users stored in localStorage
+if (!localStorage.getItem("pendingUsers")) {
+    localStorage.setItem("pendingUsers", JSON.stringify(["user1", "user2", "user3"]));
+}
+
+// Load pending users on page load
+let pendingUsers = JSON.parse(localStorage.getItem("pendingUsers")) || [];
+document.getElementById("pendingUsers").innerHTML = pendingUsers.map(user => `<li>${user}</li>`).join("");
+
+// Approve User Function
+function approveUser() {
+    alert("User approved!");
+}
+
+// Reject User Function
+function rejectUser() {
+    alert("User rejected!");
+}
+
+// Delete User Function
+function deleteUser() {
+    let username = document.getElementById("deleteUsername").value;
+    let users = JSON.parse(localStorage.getItem("pendingUsers")) || [];
+    users = users.filter(user => user !== username);
+    localStorage.setItem("pendingUsers", JSON.stringify(users));
+    document.getElementById("pendingUsers").innerHTML = users.map(user => `<li>${user}</li>`).join("");
+    alert("User " + username + " deleted!");
+}
+
+// Search User Function
+function searchUser() {
+    let searchInput = document.getElementById("searchInput").value;
+    let users = JSON.parse(localStorage.getItem("pendingUsers")) || [];
+    let foundUser = users.find(user => user.includes(searchInput));
+    document.getElementById("searchResult").textContent = foundUser ? `User Found: ${foundUser}` : "User not found.";
+}
+
+    </script>
+</body>
+</html>
+
+</body>
+</html>
