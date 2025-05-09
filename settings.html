@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+<!-- Profile Update -->
+        <h3>Update Profile</h3>
+        <input type="text" id="newUsername" placeholder="New username">
+        <input type="password" id="newPassword" placeholder="New password">
+        <button onclick="updateProfile()">Update Profile</button>
+
+        <!-- Account Deletion Request -->
+        <h3>Account Deletion Request</h3>
+        <button onclick="requestDeletion()">Request Account Deletion</button>
+    </div>
+    <script>
+
+// Update Profile Function
+function updateProfile() {
+    let newUsername = document.getElementById("newUsername").value;
+    let newPassword = document.getElementById("newPassword").value;
+    let approvedUsers = JSON.parse(localStorage.getItem("approvedUsers")) || {};
+
+    if (!approvedUsers[newUsername]) {
+        alert("User not found!");
+        return;
+    }
+
+    approvedUsers[newUsername] = newPassword;
+    localStorage.setItem("approvedUsers", JSON.stringify(approvedUsers));
+    alert("Profile updated successfully!");
+}
+
+// Request Account Deletion
+function requestDeletion() {
+    let username = document.getElementById("username").value;
+    alert("Account deletion request sent for " + username + ".");
+}
+
+    </script>
+</body>
+</html>
