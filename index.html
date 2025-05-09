@@ -130,9 +130,38 @@ input, button {
     function login() {
     let username = document.getElementById("username").value;
     localStorage.setItem("username", username); // Store username
+    localStorage.getItem("password"); // Store password
     window.location.href = "dashboard.html"; // Redirect to dashboard
     }
 
+      let loginAttempts = 0;
+let locked = false;
+
+// Login Function with Admin Approval & Lockout
+function login() {
+    if (locked) {
+        document.getElementById("errorMessage").textContent = "Account locked! Try again later.";
+        return;
+    }
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let approvedUsers = JSON.parse(localStorage.getItem("approvedUsers")) || {};
+
+    if (approvedUsers[username] && approvedUsers[username] === password) {
+        alert("Login successful!");
+        loginAttempts = 0; // Reset failed attempts
+    } else {
+        loginAttempts++;
+        document.getElementById("errorMessage").textContent = "Invalid credentials!";
+        
+        if (loginAttempts >= 3) {
+            locked = true;
+            setTimeout(() => { locked = false; loginAttempts = 0; }, 60000); // Lock for 1 min
+            alert("Too many failed attempts! Try again in 1 minute.");
+        }
+    }
+}
     </script>
 </body>
 </html>
