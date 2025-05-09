@@ -95,7 +95,18 @@ button:hover {
     margin-top: 15px;
     font-size: 14px;
     color: #ff4d4d;
-}</style>
+}
+  .login-container, .dashboard-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+input, button {
+    margin: 10px;
+    padding: 10px;
+}
+  
+    </style>
 </head>
 <body>
 
@@ -108,7 +119,7 @@ button:hover {
             <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
-             <a type="button" href="dashboard.html" class="button">Login</a>
+             <a type="button" name="login" href="dashboard.html" class="button">Login</a>
         </form>
             <a type="button" href="signup.html">Don't have an account?</a> <!--Redirect to sign up page-->
         <p id="message"></p>
